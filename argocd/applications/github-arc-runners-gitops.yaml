@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: github-arc-runners-gitops
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/adhambbaker/github-arc.git
+      targetRevision: develop
+      path: charts/github-runners/gha-runner-scale-set
+      helm:
+        releaseName: arc-runner-set
+        valueFiles:
+        - $values/deployments/arc-runners/values/values.yaml
+    - repoURL: https://github.com/adhambbaker/github-arc
+      targetRevision: develop
+      ref: values
+    - repoURL: https://github.com/adhambbaker/github-arc.git
+      targetRevision: develop
+      path: deployments/arc-runners
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arc-runners
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
