@@ -121,6 +121,8 @@ spec:
     kind: '*'
   - group: 'sealed-secrets.bitnami.com'
     kind: '*'
+  - group: 'argoproj.io'
+    kind: Application
   
   # Roles for this project
   roles:
