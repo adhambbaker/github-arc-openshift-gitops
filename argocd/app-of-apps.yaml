@@ -1,3 +1,5 @@
+
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -6,7 +8,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: github-arc-project
   source:
     repoURL: https://github.com/adhambbaker/github-arc-openshift-gitops.git
     targetRevision: develop
@@ -20,3 +22,9 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+  ignoreDifferences:
+  - group: argoproj.io
+    kind: Application
+    jsonPointers:
+    - /status

@@ -1,0 +1,176 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: github-arc-project
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: "GitHub Actions Runner Controller (ARC) and monitoring stack project"
+  
+  # Source repositories that applications in this project can deploy from
+  sourceRepos:
+  - 'https://github.com/adhambbaker/github-arc-gitops.git'
+  - 'https://github.com/adhambbaker/github-arc.git'
+  - 'ghcr.io/actions/actions-runner-controller-charts'
+  - 'https://grafana.github.io/helm-charts'
+  - 'https://prometheus-community.github.io/helm-charts'
+  - 'https://helm.releases.hashicorp.com'
+  - 'https://charts.bitnami.com/bitnami'
+  
+  # Destinations that applications in this project can deploy to
+  destinations:
+  # GitHub ARC namespaces
+  - namespace: arc-system
+    server: https://kubernetes.default.svc
+  - namespace: arc-runners
+    server: https://kubernetes.default.svc
+  - namespace: arc-runners-dev
+    server: https://kubernetes.default.svc
+  - namespace: arc-runners-staging
+    server: https://kubernetes.default.svc
+  - namespace: arc-runners-prod
+    server: https://kubernetes.default.svc
+  
+  # Monitoring namespaces
+  - namespace: monitoring
+    server: https://kubernetes.default.svc
+  - namespace: openshift-logging
+    server: https://kubernetes.default.svc
+  - namespace: grafana-operator
+    server: https://kubernetes.default.svc
+  - namespace: loki-operator
+    server: https://kubernetes.default.svc
+  
+  # OpenShift GitOps namespace for the project itself
+  - namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  
+  # Cluster-wide resources
+  - namespace: '*'
+    server: https://kubernetes.default.svc
+  
+  # Cluster resource allowlist
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+  - group: 'apiextensions.k8s.io'
+    kind: CustomResourceDefinition
+  - group: 'admissionregistration.k8s.io'
+    kind: ValidatingAdmissionWebhook
+  - group: 'admissionregistration.k8s.io'
+    kind: MutatingAdmissionWebhook
+  - group: 'security.openshift.io'
+    kind: SecurityContextConstraints
+  - group: 'operators.coreos.com'
+    kind: Subscription
+  - group: 'operators.coreos.com'
+    kind: OperatorGroup
+  - group: 'operators.coreos.com'
+    kind: CatalogSource
+  - group: 'operators.coreos.com'
+    kind: InstallPlan
+  - group: 'monitoring.coreos.com'
+    kind: ServiceMonitor
+  - group: 'monitoring.coreos.com'
+    kind: PrometheusRule
+  
+  # Namespace resource allowlist
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Secret
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: ServiceAccount
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: 'apps'
+    kind: Deployment
+  - group: 'apps'
+    kind: ReplicaSet
+  - group: 'apps'
+    kind: StatefulSet
+  - group: 'apps'
+    kind: DaemonSet
+  - group: 'rbac.authorization.k8s.io'
+    kind: Role
+  - group: 'rbac.authorization.k8s.io'
+    kind: RoleBinding
+  - group: 'route.openshift.io'
+    kind: Route
+  - group: 'actions.github.com'
+    kind: '*'
+  - group: 'grafana.integreatly.org'
+    kind: '*'
+  - group: 'loki.grafana.com'
+    kind: '*'
+  - group: 'logging.openshift.io'
+    kind: '*'
+  - group: 'monitoring.coreos.com'
+    kind: '*'
+  - group: 'bitnami.com'
+    kind: '*'
+  - group: 'sealed-secrets.bitnami.com'
+    kind: '*'
+  
+  # Roles for this project
+  roles:
+  # Developer role - can view and sync applications
+  - name: developer
+    description: Developer access to GitHub ARC applications
+    policies:
+    - p, proj:github-arc-project:developer, applications, get, github-arc-project/*, allow
+    - p, proj:github-arc-project:developer, applications, sync, github-arc-project/*, allow
+    - p, proj:github-arc-project:developer, applications, action/*, github-arc-project/*, allow
+    - p, proj:github-arc-project:developer, repositories, get, *, allow
+    - p, proj:github-arc-project:developer, logs, get, github-arc-project/*, allow
+    groups:
+    - github-arc-developers
+    - openshift-gitops-developers
+  
+  # Admin role - full control over the project
+  - name: admin
+    description: Admin access to GitHub ARC project
+    policies:
+    - p, proj:github-arc-project:admin, applications, *, github-arc-project/*, allow
+    - p, proj:github-arc-project:admin, repositories, *, *, allow
+    - p, proj:github-arc-project:admin, clusters, *, *, allow
+    groups:
+    - cluster-admins
+    - github-arc-admins
+    - openshift-gitops-admins
+  
+  # Read-only role for monitoring
+  # - name: readonly
+  #   description: Read-only access for monitoring
+  #   policies:
+  #   - p, proj:github-arc-project:readonly, applications, get, github-arc-project/*, allow
+  #   - p, proj:github-arc-project:readonly, logs, get, github-arc-project/*, allow
+  #   groups:
+  #   - github-arc-readonly
+  
+  # Sync windows for controlled deployments
+  # syncWindows:
+  # - kind: allow
+  #   schedule: '0 9-17 * * 1-5'  # Business hours Monday-Friday
+  #   duration: 8h
+  #   applications:
+  #   - '*'
+  #   manualSync: true
+  # - kind: deny
+  #   schedule: '0 0-8,18-23 * * *'  # Outside business hours
+  #   duration: 10h
+  #   applications:
+  #   - '*-prod'  # Only affects production apps
+  #   manualSync: false
+  
+  # Signature keys for enhanced security (optional)
+  # signatureKeys:
+  # - keyID: github-arc-signing-key
