@@ -10,7 +10,7 @@ spec:
   
   # Source repositories that applications in this project can deploy from
   sourceRepos:
-  - 'https://github.com/adhambbaker/github-arc-gitops.git'
+  - 'https://github.com/adhambbaker/github-arc-openshift-gitops.git'
   - 'https://github.com/adhambbaker/github-arc.git'
   - 'ghcr.io/actions/actions-runner-controller-charts'
   - 'https://grafana.github.io/helm-charts'
