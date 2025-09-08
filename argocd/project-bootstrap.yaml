@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-projects-bootstrap
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default  # Bootstrap always uses default project
+  source:
+    repoURL: https://github.com/adhambbaker/github-arc-openshift-gitops.git
+    targetRevision: develop
+    path: argocd/projects
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true  # Ensures project updates are applied
+  ignoreDifferences:
+  - group: argoproj.io
+    kind: AppProject
+    jsonPointers:
+    - /status
