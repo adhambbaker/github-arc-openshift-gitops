@@ -80,6 +80,8 @@ spec:
     kind: PrometheusRule
   - group: 'argoproj.io'
     kind: Application
+  - group: 'node.k8s.io'
+    kind: RuntimeClass
   
   # Namespace resource allowlist
   namespaceResourceWhitelist:
@@ -123,7 +125,8 @@ spec:
     kind: '*'
   - group: 'argoproj.io'
     kind: Application
-  
+  - group: 'node.k8s.io'
+    kind: RuntimeClass
   # Roles for this project
   roles:
   # Developer role - can view and sync applications
