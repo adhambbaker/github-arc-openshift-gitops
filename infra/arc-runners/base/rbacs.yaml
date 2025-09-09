@@ -1,4 +1,5 @@
 # OpenShift GitOps ArgoCD RBAC Configuration
+# Converted from Terraform to YAML for GitOps management
 
 # Role for arc-system namespace operations
 apiVersion: rbac.authorization.k8s.io/v1
@@ -86,6 +87,64 @@ subjects:
   name: openshift-gitops-argocd-application-controller
   namespace: openshift-gitops
 ---
+# Role for monitoring namespace operations
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: openshift-gitops-monitoring-role
+  namespace: monitoring
+rules:
+# Core resources needed for Grafana
+- apiGroups: [""]
+  resources: ["serviceaccounts", "secrets", "configmaps", "services", "endpoints", "pods", "persistentvolumeclaims"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# Apps resources for deployments
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets", "daemonsets", "statefulsets"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# RBAC resources
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["roles", "rolebindings"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# Monitoring resources
+- apiGroups: ["monitoring.coreos.com"]
+  resources: ["servicemonitors", "prometheusrules"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# OpenShift routes
+- apiGroups: ["route.openshift.io"]
+  resources: ["routes"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+---
+# RoleBinding for monitoring namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-gitops-monitoring-rolebinding
+  namespace: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-gitops-monitoring-role
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
+---
+# RoleBinding for monitoring namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-gitops-monitoring-rolebinding
+  namespace: grafana-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-gitops-monitoring-role
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
+
 # ClusterRole for ArgoCD with extended permissions
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
