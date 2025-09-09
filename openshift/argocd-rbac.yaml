@@ -211,7 +211,7 @@ rules:
   resources: ["networkpolicies", "ingresses"]
   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
 # runtimeclasses
-- apiGroups: ["nnode.k8s.io"]
+- apiGroups: ["node.k8s.io"]
   resources: ["runtimeclasses"]
   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
 ---
