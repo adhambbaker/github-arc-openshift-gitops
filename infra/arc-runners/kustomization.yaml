@@ -10,9 +10,3 @@ resources:
 # - base/network-policy.yaml
 # - base/opa-policies.yaml
 # - values.yaml
-
-# Common labels applied to all resources
-commonLabels:
-  app.kubernetes.io/name: arc-runners
-  app.kubernetes.io/component: runners
-  app.kubernetes.io/part-of: github-arc
