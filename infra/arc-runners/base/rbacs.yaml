@@ -1,48 +1,47 @@
 # OpenShift GitOps ArgoCD RBAC Configuration
-# Converted from Terraform to YAML for GitOps management
 
 # Role for arc-system namespace operations
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: Role
-# metadata:
-#   name: openshift-gitops-arc-system-role
-#   namespace: arc-system
-# rules:
-# # Core resources needed for GitHub ARC
-# - apiGroups: [""]
-#   resources: ["serviceaccounts", "secrets", "configmaps", "services", "endpoints", "pods"]
-#   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
-# # Apps resources for deployments
-# - apiGroups: ["apps"]
-#   resources: ["deployments", "replicasets", "daemonsets", "statefulsets"]
-#   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
-# # RBAC resources
-# - apiGroups: ["rbac.authorization.k8s.io"]
-#   resources: ["roles", "rolebindings"]
-#   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
-# # GitHub ARC custom resources
-# - apiGroups: ["actions.github.com"]
-#   resources: ["*"]
-#   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
-# # Monitoring
-# - apiGroups: ["monitoring.coreos.com"]
-#   resources: ["servicemonitors"]
-#   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: openshift-gitops-arc-system-role
+  namespace: arc-system
+rules:
+# Core resources needed for GitHub ARC
+- apiGroups: [""]
+  resources: ["serviceaccounts", "secrets", "configmaps", "services", "endpoints", "pods"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# Apps resources for deployments
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets", "daemonsets", "statefulsets"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# RBAC resources
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["roles", "rolebindings"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# GitHub ARC custom resources
+- apiGroups: ["actions.github.com"]
+  resources: ["*"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# Monitoring
+- apiGroups: ["monitoring.coreos.com"]
+  resources: ["servicemonitors"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
 ---
-# # RoleBinding for arc-system namespace
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: RoleBinding
-# metadata:
-#   name: openshift-gitops-arc-system-rolebinding
-#   namespace: arc-system
-# roleRef:
-#   apiGroup: rbac.authorization.k8s.io
-#   kind: Role
-#   name: openshift-gitops-arc-system-role
-# subjects:
-# - kind: ServiceAccount
-#   name: openshift-gitops-argocd-application-controller
-#   namespace: openshift-gitops
+# RoleBinding for arc-system namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-gitops-arc-system-rolebinding
+  namespace: arc-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-gitops-arc-system-role
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
 ---
 # Role for arc-runners namespace operations
 apiVersion: rbac.authorization.k8s.io/v1
