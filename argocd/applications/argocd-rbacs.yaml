@@ -12,8 +12,7 @@ spec:
     targetRevision: develop
     path: openshift
     directory:
-      include: 
-        - argocd-rbac.yaml
+      include: argocd-rbac.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-gitops
