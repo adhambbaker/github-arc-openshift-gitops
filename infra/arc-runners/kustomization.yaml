@@ -6,7 +6,7 @@ metadata:
 
 resources:
 - base/namespace.yaml
-- base/rbac.yaml
+- base/rbacs.yaml
 # - base/network-policy.yaml
 # - base/opa-policies.yaml
 # - values.yaml
