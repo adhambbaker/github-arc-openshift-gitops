@@ -210,6 +210,10 @@ rules:
 - apiGroups: ["networking.k8s.io"]
   resources: ["networkpolicies", "ingresses"]
   verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+# runtimeclasses
+- apiGroups: ["nnode.k8s.io"]
+  resources: ["runtimeclasses"]
+  verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
 ---
 # ClusterRoleBinding for ArgoCD
 apiVersion: rbac.authorization.k8s.io/v1
