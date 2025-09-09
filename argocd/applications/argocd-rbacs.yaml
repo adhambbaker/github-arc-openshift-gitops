@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openshift-gitops-rbac
+  name: openshift-gitops-rbacs
   namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: github-arc-project
   source:
     repoURL: https://github.com/adhambbaker/github-arc-openshift-gitops.git
     targetRevision: develop
