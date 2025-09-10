@@ -51,36 +51,36 @@ spec:
   
   # Cluster resource allowlist
   clusterResourceWhitelist:
-  # - group: ''
-  #   kind: Namespace
-  # - group: 'rbac.authorization.k8s.io'
-  #   kind: ClusterRole
-  # - group: 'rbac.authorization.k8s.io'
-  #   kind: ClusterRoleBinding
-  # - group: 'apiextensions.k8s.io'
-  #   kind: CustomResourceDefinition
-  # - group: 'admissionregistration.k8s.io'
-  #   kind: ValidatingAdmissionWebhook
-  # - group: 'admissionregistration.k8s.io'
-  #   kind: MutatingAdmissionWebhook
-  # - group: 'security.openshift.io'
-  #   kind: SecurityContextConstraints
-  # - group: 'operators.coreos.com'
-  #   kind: Subscription
-  # - group: 'operators.coreos.com'
-  #   kind: OperatorGroup
-  # - group: 'operators.coreos.com'
-  #   kind: CatalogSource
-  # - group: 'operators.coreos.com'
-  #   kind: InstallPlan
-  # - group: 'monitoring.coreos.com'
-  #   kind: ServiceMonitor
-  # - group: 'monitoring.coreos.com'
-  #   kind: PrometheusRule
-  # - group: 'argoproj.io'
-  #   kind: Application
-  # - group: 'node.k8s.io'
-  #   kind: RuntimeClass
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+  - group: 'apiextensions.k8s.io'
+    kind: CustomResourceDefinition
+  - group: 'admissionregistration.k8s.io'
+    kind: ValidatingAdmissionWebhook
+  - group: 'admissionregistration.k8s.io'
+    kind: MutatingAdmissionWebhook
+  - group: 'security.openshift.io'
+    kind: SecurityContextConstraints
+  - group: 'operators.coreos.com'
+    kind: Subscription
+  - group: 'operators.coreos.com'
+    kind: OperatorGroup
+  - group: 'operators.coreos.com'
+    kind: CatalogSource
+  - group: 'operators.coreos.com'
+    kind: InstallPlan
+  - group: 'monitoring.coreos.com'
+    kind: ServiceMonitor
+  - group: 'monitoring.coreos.com'
+    kind: PrometheusRule
+  - group: 'argoproj.io'
+    kind: Application
+  - group: 'node.k8s.io'
+    kind: RuntimeClass
   
   # Namespace resource allowlist
   # namespaceResourceWhitelist:
