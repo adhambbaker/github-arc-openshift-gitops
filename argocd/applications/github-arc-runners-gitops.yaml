@@ -41,7 +41,7 @@ spec:
       - RespectIgnoreDifferences=true
       - ApplyOutOfSyncOnly=true
   ignoreDifferences:
-    - group: "actions.github.com/v1alpha1"
+    - group: "actions.github.com"
       kind: AutoscalingListener
       name: "arc-runner-set-*-listener"
       jsonPointers:
