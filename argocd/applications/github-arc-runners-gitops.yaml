@@ -38,12 +38,12 @@ spec:
   #     selfHeal: false
     # syncOptions:
     #   - CreateNamespace=true
-  # ignoreDifferences:
-  #   - group: actions.github.com/v1alpha1
-  #     kind: AutoscalingListener
-  #     name: "*"
-  #     jsonPointers:
-  #       - '.'
+  ignoreDifferences:
+    - group: actions.github.com/v1alpha1
+      kind: AutoscalingListener
+      name: "*"
+      jsonPointers:
+        - '.'
   #   - group: apiVersion: v1
   #     kind: ServiceAccount
   #     name: "arc-runner-set-gha-rs-no-permission"
