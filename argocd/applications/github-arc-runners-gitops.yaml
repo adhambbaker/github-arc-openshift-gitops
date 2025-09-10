@@ -56,3 +56,6 @@ spec:
         - '.'
     - group: rbac.authorization.k8s.io/v1
       kind: RoleBinding
+      name: "arc-runner-set-754b578d-listener"
+      jsonPointers:
+        - '.'
