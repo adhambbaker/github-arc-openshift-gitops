@@ -85,7 +85,11 @@ spec:
   # Namespace resource allowlist
   namespaceResourceWhitelist:
   - group: ''
-  - kind: Pod
+    kind: Pod  # Required for runner pods
+  - group: ''
+    kind: Endpoints  # Often needed for services
+  - group: ''
+    kind: Event  # For troubleshooting
   - group: ''
     kind: ConfigMap
   - group: ''
