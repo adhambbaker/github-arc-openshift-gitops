@@ -41,10 +41,12 @@ spec:
       - RespectIgnoreDifferences=true
       - ApplyOutOfSyncOnly=true
   ignoreDifferences:
-    - group: "actions.github.com"
+    - group: actions.github.com/v1alpha1
       kind: AutoscalingListener
       jsonPointers:
-        - /
+        - /metadata
+        - /status
+        - /spec
     # - group: apiVersion/v1
     #   kind: ServiceAccount
     #   name: "arc-runner-set-gha-rs-no-permission"
