@@ -51,87 +51,87 @@ spec:
   
   # Cluster resource allowlist
   clusterResourceWhitelist:
-  - group: ''
-    kind: Namespace
-  - group: 'rbac.authorization.k8s.io'
-    kind: ClusterRole
-  - group: 'rbac.authorization.k8s.io'
-    kind: ClusterRoleBinding
-  - group: 'apiextensions.k8s.io'
-    kind: CustomResourceDefinition
-  - group: 'admissionregistration.k8s.io'
-    kind: ValidatingAdmissionWebhook
-  - group: 'admissionregistration.k8s.io'
-    kind: MutatingAdmissionWebhook
-  - group: 'security.openshift.io'
-    kind: SecurityContextConstraints
-  - group: 'operators.coreos.com'
-    kind: Subscription
-  - group: 'operators.coreos.com'
-    kind: OperatorGroup
-  - group: 'operators.coreos.com'
-    kind: CatalogSource
-  - group: 'operators.coreos.com'
-    kind: InstallPlan
-  - group: 'monitoring.coreos.com'
-    kind: ServiceMonitor
-  - group: 'monitoring.coreos.com'
-    kind: PrometheusRule
-  - group: 'argoproj.io'
-    kind: Application
-  - group: 'node.k8s.io'
-    kind: RuntimeClass
+  # - group: ''
+  #   kind: Namespace
+  # - group: 'rbac.authorization.k8s.io'
+  #   kind: ClusterRole
+  # - group: 'rbac.authorization.k8s.io'
+  #   kind: ClusterRoleBinding
+  # - group: 'apiextensions.k8s.io'
+  #   kind: CustomResourceDefinition
+  # - group: 'admissionregistration.k8s.io'
+  #   kind: ValidatingAdmissionWebhook
+  # - group: 'admissionregistration.k8s.io'
+  #   kind: MutatingAdmissionWebhook
+  # - group: 'security.openshift.io'
+  #   kind: SecurityContextConstraints
+  # - group: 'operators.coreos.com'
+  #   kind: Subscription
+  # - group: 'operators.coreos.com'
+  #   kind: OperatorGroup
+  # - group: 'operators.coreos.com'
+  #   kind: CatalogSource
+  # - group: 'operators.coreos.com'
+  #   kind: InstallPlan
+  # - group: 'monitoring.coreos.com'
+  #   kind: ServiceMonitor
+  # - group: 'monitoring.coreos.com'
+  #   kind: PrometheusRule
+  # - group: 'argoproj.io'
+  #   kind: Application
+  # - group: 'node.k8s.io'
+  #   kind: RuntimeClass
   
   # Namespace resource allowlist
-  namespaceResourceWhitelist:
-  - group: ''
-    kind: Pod  # Required for runner pods
-  - group: ''
-    kind: Endpoints  # Often needed for services
-  - group: ''
-    kind: Event  # For troubleshooting
-  - group: ''
-    kind: ConfigMap
-  - group: ''
-    kind: Secret
-  - group: ''
-    kind: Service
-  - group: ''
-    kind: ServiceAccount
-  - group: ''
-    kind: PersistentVolumeClaim
-  - group: 'apps'
-    kind: Deployment
-  - group: 'apps'
-    kind: ReplicaSet
-  - group: 'apps'
-    kind: StatefulSet
-  - group: 'apps'
-    kind: DaemonSet
-  - group: 'rbac.authorization.k8s.io'
-    kind: Role
-  - group: 'rbac.authorization.k8s.io'
-    kind: RoleBinding
-  - group: 'route.openshift.io'
-    kind: Route
-  - group: 'actions.github.com'
-    kind: '*'
-  - group: 'grafana.integreatly.org'
-    kind: '*'
-  - group: 'loki.grafana.com'
-    kind: '*'
-  - group: 'logging.openshift.io'
-    kind: '*'
-  - group: 'monitoring.coreos.com'
-    kind: '*'
-  - group: 'bitnami.com'
-    kind: '*'
-  - group: 'sealed-secrets.bitnami.com'
-    kind: '*'
-  - group: 'argoproj.io'
-    kind: Application
-  - group: 'node.k8s.io'
-    kind: RuntimeClass
+  # namespaceResourceWhitelist:
+  # - group: ''
+  #   kind: Pod  # Required for runner pods
+  # - group: ''
+  #   kind: Endpoints  # Often needed for services
+  # - group: ''
+  #   kind: Event  # For troubleshooting
+  # - group: ''
+  #   kind: ConfigMap
+  # - group: ''
+  #   kind: Secret
+  # - group: ''
+  #   kind: Service
+  # - group: ''
+  #   kind: ServiceAccount
+  # - group: ''
+  #   kind: PersistentVolumeClaim
+  # - group: 'apps'
+  #   kind: Deployment
+  # - group: 'apps'
+  #   kind: ReplicaSet
+  # - group: 'apps'
+  #   kind: StatefulSet
+  # - group: 'apps'
+  #   kind: DaemonSet
+  # - group: 'rbac.authorization.k8s.io'
+  #   kind: Role
+  # - group: 'rbac.authorization.k8s.io'
+  #   kind: RoleBinding
+  # - group: 'route.openshift.io'
+  #   kind: Route
+  # - group: 'actions.github.com'
+  #   kind: '*'
+  # - group: 'grafana.integreatly.org'
+  #   kind: '*'
+  # - group: 'loki.grafana.com'
+  #   kind: '*'
+  # - group: 'logging.openshift.io'
+  #   kind: '*'
+  # - group: 'monitoring.coreos.com'
+  #   kind: '*'
+  # - group: 'bitnami.com'
+  #   kind: '*'
+  # - group: 'sealed-secrets.bitnami.com'
+  #   kind: '*'
+  # - group: 'argoproj.io'
+  #   kind: Application
+  # - group: 'node.k8s.io'
+  #   kind: RuntimeClass
   # Roles for this project
   roles:
   # Developer role - can view and sync applications
