@@ -40,23 +40,23 @@ spec:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
   ignoreDifferences:
-    - group: ""
+    - group: "actions.github.com/v1alpha1"
       kind: AutoscalingListener
-      name: "*"
+      name: "arc-runner-set-*-listener"
       jsonPointers:
-        - '/'
-    - group: apiVersion/v1
-      kind: ServiceAccount
-      name: "arc-runner-set-gha-rs-no-permission"
-      jsonPointers:
-        - '.'
-    - group: rbac.authorization.k8s.io/v1
-      kind: Role
-      name: "arc-runner-set-*"
-      jsonPointers:
-        - '.'
-    - group: rbac.authorization.k8s.io/v1
-      kind: RoleBinding
-      name: "arc-runner-set-754b578d-listener"
-      jsonPointers:
-        - '.'
+        - /
+    # - group: apiVersion/v1
+    #   kind: ServiceAccount
+    #   name: "arc-runner-set-gha-rs-no-permission"
+    #   jsonPointers:
+    #     - '.'
+    # - group: rbac.authorization.k8s.io/v1
+    #   kind: Role
+    #   name: "arc-runner-set-*"
+    #   jsonPointers:
+    #     - '.'
+    # - group: rbac.authorization.k8s.io/v1
+    #   kind: RoleBinding
+    #   name: "arc-runner-set-754b578d-listener"
+    #   jsonPointers:
+    #     - '.'
