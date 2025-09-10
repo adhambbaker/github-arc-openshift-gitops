@@ -7,7 +7,11 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   description: "GitHub Actions Runner Controller (ARC) and monitoring stack project"
-  
+  resourceFilter:
+    - group: "actions.github.com/v1alpha1"
+      kinds: ["AutoscalingListener"]
+      clusters: ["*"]
+      name: "arc-runner-set-*-listener"
   # Source repositories that applications in this project can deploy from
   sourceRepos:
   - 'https://github.com/adhambbaker/github-arc-openshift-gitops.git'
