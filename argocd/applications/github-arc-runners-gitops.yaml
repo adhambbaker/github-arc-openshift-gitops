@@ -43,7 +43,7 @@ spec:
       kind: AutoscalingListener
       name: "*"
       jsonPointers:
-        - '.'
+        - '/'
     - group: apiVersion/v1
       kind: ServiceAccount
       name: "arc-runner-set-gha-rs-no-permission"
