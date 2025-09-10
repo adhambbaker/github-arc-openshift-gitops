@@ -3,8 +3,8 @@ kind: Application
 metadata:
   name: github-arc-runners-gitops
   namespace: openshift-gitops
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
   annotations:
     # Deploy after the controller (wave 10) is ready
     argocd.argoproj.io/sync-wave: "20"
