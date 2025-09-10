@@ -38,8 +38,10 @@ spec:
       selfHeal: false
     syncOptions:
       - CreateNamespace=true
-      - RespectIgnoreDifferences=true
       - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
   ignoreDifferences:
     - group: actions.github.com/v1alpha1
       kind: AutoscalingListener
