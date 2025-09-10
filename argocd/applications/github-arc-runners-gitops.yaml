@@ -36,8 +36,9 @@ spec:
   #   automated:
   #     prune: false
   #     selfHeal: false
-    # syncOptions:
-    #   - CreateNamespace=true
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
   ignoreDifferences:
     - group: ""
       kind: AutoscalingListener
