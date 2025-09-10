@@ -1,46 +1,46 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: github-arc-runners-gitops
-  namespace: openshift-gitops
-  # finalizers:
-  #   - resources-finalizer.argocd.argoproj.io
-  annotations:
-    # Deploy after the controller (wave 10) is ready
-    argocd.argoproj.io/sync-wave: "20"
-    # Wait for controller to be healthy before proceeding
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-spec:
-  project: github-arc-project
-  sources:
-    - repoURL: https://github.com/adhambbaker/github-arc-openshift-gitops.git
-      targetRevision: develop
-      path: infra/arc-runners
-    - repoURL: https://github.com/adhambbaker/github-arc.git
-      targetRevision: develop
-      path: charts/github-runners/gha-runner-scale-set
-      helm:
-        releaseName: arc-runner-set
-        valueFiles:
-        - $values/deployments/arc-runners/values/values.yaml
-    - repoURL: https://github.com/adhambbaker/github-arc.git
-      targetRevision: develop
-      ref: values
-    - repoURL: https://github.com/adhambbaker/github-arc.git
-      targetRevision: develop
-      path: deployments/arc-runners
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: arc-runners
-  # syncPolicy:
-  #   automated:
-  #     prune: false
-  #     selfHeal: false
-    syncOptions:
-      - CreateNamespace=true
-  ignoreDifferences:
-    - group: actions.github.com/v1alpha1
-      kind: AutoscalingListener
-      name: "*"
-      jsonPointers:
-        - '.'
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: github-arc-runners-gitops
+#   namespace: openshift-gitops
+#   # finalizers:
+#   #   - resources-finalizer.argocd.argoproj.io
+#   annotations:
+#     # Deploy after the controller (wave 10) is ready
+#     argocd.argoproj.io/sync-wave: "20"
+#     # Wait for controller to be healthy before proceeding
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+# spec:
+#   project: github-arc-project
+#   sources:
+#     - repoURL: https://github.com/adhambbaker/github-arc-openshift-gitops.git
+#       targetRevision: develop
+#       path: infra/arc-runners
+#     - repoURL: https://github.com/adhambbaker/github-arc.git
+#       targetRevision: develop
+#       path: charts/github-runners/gha-runner-scale-set
+#       helm:
+#         releaseName: arc-runner-set
+#         valueFiles:
+#         - $values/deployments/arc-runners/values/values.yaml
+#     - repoURL: https://github.com/adhambbaker/github-arc.git
+#       targetRevision: develop
+#       ref: values
+#     - repoURL: https://github.com/adhambbaker/github-arc.git
+#       targetRevision: develop
+#       path: deployments/arc-runners
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: arc-runners
+#   # syncPolicy:
+#   #   automated:
+#   #     prune: false
+#   #     selfHeal: false
+#     syncOptions:
+#       - CreateNamespace=true
+#   ignoreDifferences:
+#     - group: actions.github.com/v1alpha1
+#       kind: AutoscalingListener
+#       name: "*"
+#       jsonPointers:
+#         - '.'
