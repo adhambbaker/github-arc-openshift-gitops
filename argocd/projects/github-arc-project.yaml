@@ -144,6 +144,7 @@ spec:
     - p, proj:github-arc-project:developer, repositories, get, *, allow
     - p, proj:github-arc-project:developer, logs, get, github-arc-project/*, allow
     groups:
+    - cluster-admins
     - github-arc-developers
     - openshift-gitops-developers
   
