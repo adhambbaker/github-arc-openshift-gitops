@@ -85,6 +85,8 @@ spec:
   # Namespace resource allowlist
   namespaceResourceWhitelist:
   - group: ''
+  - kind: Pod
+  - group: ''
     kind: ConfigMap
   - group: ''
     kind: Secret
