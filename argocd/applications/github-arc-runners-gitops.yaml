@@ -44,3 +44,18 @@ spec:
       name: "*"
       jsonPointers:
         - '.'
+    - group: apiVersion: v1
+      kind: ServiceAccount
+      name: "arc-runner-set-gha-rs-no-permission"
+      jsonPointers:
+        - '.'
+    - group: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: "arc-runner-set-*"
+      jsonPointers:
+        - '.'
+    - group: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: "arc-runner-set-*"
+      jsonPointers:
+        - '.'
