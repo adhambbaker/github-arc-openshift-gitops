@@ -57,8 +57,10 @@ spec:
     #   name: "arc-runner-set-*"
     #   jsonPointers:
     #     - '.'
-    # - group: rbac.authorization.k8s.io/v1
-    #   kind: RoleBinding
-    #   name: "arc-runner-set-754b578d-listener"
-    #   jsonPointers:
-    #     - '.'
+    - group: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: "arc-runner-set-754b578d-listener"
+      jsonPointers:
+        - /metadata
+        - /roleRef
+        - subjects
