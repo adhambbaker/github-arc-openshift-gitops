@@ -39,7 +39,7 @@ spec:
     # syncOptions:
     #   - CreateNamespace=true
   ignoreDifferences:
-    - group: actions.github.com/v1alpha1
+    - group: ""
       kind: AutoscalingListener
       name: "*"
       jsonPointers:
