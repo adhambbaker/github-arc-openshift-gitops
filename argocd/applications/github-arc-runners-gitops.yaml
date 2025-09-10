@@ -43,7 +43,6 @@ spec:
   ignoreDifferences:
     - group: "actions.github.com"
       kind: AutoscalingListener
-      name: "arc-runner-set-*-listener"
       jsonPointers:
         - /
     # - group: apiVersion/v1
