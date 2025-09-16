@@ -7,16 +7,20 @@ metadata:
     app.kubernetes.io/name: arc-system
     app.kubernetes.io/component: namespace
     app.kubernetes.io/part-of: github-arc
+    prometheus.io/scrape: "true"
+    openshift.io/user-monitoring: "true"
+    openshift.io/cluster-monitoring: "true"
     # OpenShift specific labels
     # pod-security.kubernetes.io/enforce: restricted
     # pod-security.kubernetes.io/audit: restricted
     # pod-security.kubernetes.io/warn: restricted
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    monitoring.coreos.com/enabled: "true"
     # OpenShift annotations
-    # openshift.io/sa.scc.mcs: "s0:c26,c5"
-    # openshift.io/sa.scc.supplemental-groups: "1000700000/10000"
-    # openshift.io/sa.scc.uid-range: "1000700000/10000"
+#     openshift.io/sa.scc.mcs: "s0:c26,c5"
+#     openshift.io/sa.scc.supplemental-groups: "1000700000/10000"
+#     openshift.io/sa.scc.uid-range: "1000700000/10000"
 ---
 apiVersion: v1
 kind: ServiceAccount
