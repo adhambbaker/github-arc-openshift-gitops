@@ -40,7 +40,7 @@ defaultAddCapabilities: null
 fsGroup:
   ranges:
   - max: 1000700001
-    min: 1000700001
+    min: 1000700999
   type: MustRunAs
 groups: []
 priority: null
@@ -58,7 +58,7 @@ seLinuxContext:
 supplementalGroups:
   ranges:
   - max: 1000700001
-    min: 1000700001
+    min: 1000700999
   type: MustRunAs
 users: []
 volumes:
