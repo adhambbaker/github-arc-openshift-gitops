@@ -6,7 +6,7 @@
 # allowPrivilegedContainer: false
 # runAsUser:
 #   type: MustRunAsRange 
-#   uidRangeMin: 1000770000
+#   uidRangeMin: 1000770001
 #   uidRangeMax: 1000779999
 # seLinuxContext:
 #   type: RunAsAny
@@ -37,11 +37,11 @@ allowPrivilegeEscalation: true
 allowPrivilegedContainer: false
 allowedCapabilities: null
 defaultAddCapabilities: null
-# fsGroup:
-#   ranges:
-#   - max: 1000779999
-#     min: 1000770000
-#   type: MustRunAs
+fsGroup:
+  ranges:
+  - max: 1000770001
+    min: 1000770001
+  type: MustRunAs
 groups: []
 priority: null
 readOnlyRootFilesystem: false
@@ -57,8 +57,8 @@ seLinuxContext:
   type: MustRunAs
 supplementalGroups:
   ranges:
-  - max: 1000779999
-    min: 1000770000
+  - max: 1000770001
+    min: 1000770001
   type: MustRunAs
 users: []
 volumes:
