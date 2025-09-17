@@ -28,28 +28,28 @@ metadata:
   annotations:
     kubernetes.io/description: Based on restricted SCC, but forces uid/gid 1001/123
   name: github-arc-scc
-# allowHostDirVolumePlugin: false
-# allowHostIPC: false
-# allowHostNetwork: false
-# allowHostPID: false
-# allowHostPorts: false
-# allowPrivilegeEscalation: true
+allowHostDirVolumePlugin: false
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegeEscalation: true
 allowPrivilegedContainer: false
-# allowedCapabilities: null
-# defaultAddCapabilities: null
+allowedCapabilities: null
+defaultAddCapabilities: null
 fsGroup:
   ranges:
   - max: 1000779999
     min: 1000770000
   type: MustRunAs
-# groups: []
-# priority: null
-# readOnlyRootFilesystem: false
-# requiredDropCapabilities:
-# - KILL
-# - MKNOD
-# - SETUID
-# - SETGID
+groups: []
+priority: null
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+- KILL
+- MKNOD
+- SETUID
+- SETGID
 runAsUser:
   type: MustRunAs
   uid: 1000770010
@@ -60,7 +60,7 @@ supplementalGroups:
   - max: 1000779999
     min: 1000770000
   type: MustRunAs
-# users: []
+users: []
 # volumes:
 # - configMap
 # - csi
