@@ -234,45 +234,45 @@ subjects:
 # Openshift-specific SecurityContextConstraints config
 #
 ###############################################################################
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: rolebinding-scc-privileged
-  namespace: arc-runners
-subjects:
-- kind: ServiceAccount
-  name: arc-controller-sa
-  namespace: arc-system
-roleRef:
-  kind: ClusterRole
-  name: system:openshift:scc:privileged
-  apiGroup: rbac.authorization.k8s.io
-
-
 # ---
-# kind: ClusterRole
 # apiVersion: rbac.authorization.k8s.io/v1
-# metadata:
-#   name: system:openshift:scc:github-arc
-# rules:
-#   - apiGroups: ["security.openshift.io"]
-#     resources: ["securitycontextconstraints"]
-#     resourceNames: ["github-arc-scc"]
-#     verbs: ["use"]
-# ---
 # kind: RoleBinding
-# apiVersion: rbac.authorization.k8s.io/v1
 # metadata:
-#   name: use-github-arc-scc
+#   name: rolebinding-scc-privileged
+#   namespace: arc-runners
 # subjects:
-#   - kind: ServiceAccount
-#     name: arc-controller-sa
-#     namespace: arc-system
+# - kind: ServiceAccount
+#   name: arc-controller-sa
+#   namespace: arc-system
 # roleRef:
 #   kind: ClusterRole
-#   name: system:openshift:scc:github-arc
+#   name: system:openshift:scc:privileged
 #   apiGroup: rbac.authorization.k8s.io
+
+
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: system:openshift:scc:github-arc
+rules:
+  - apiGroups: ["security.openshift.io"]
+    resources: ["securitycontextconstraints"]
+    resourceNames: ["github-arc-scc"]
+    verbs: ["use"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: use-github-arc-scc
+subjects:
+  - kind: ServiceAccount
+    name: arc-controller-sa
+    namespace: arc-system
+roleRef:
+  kind: ClusterRole
+  name: system:openshift:scc:github-arc
+  apiGroup: rbac.authorization.k8s.io
 
 # ---
 # kind: RoleBinding
