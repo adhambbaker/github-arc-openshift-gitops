@@ -14,12 +14,12 @@ fsGroup:
   type: MustRunAs 
   ranges:
     - min: 1000680000
-      max: 1000680000
+      max: 1000689999
 supplementalGroups:
   type: MustRunAs 
   ranges:
     - min: 1000680000
-      max: 1000680000
+      max: 1000689999
 
 # ---
 # apiVersion: security.openshift.io/v1
