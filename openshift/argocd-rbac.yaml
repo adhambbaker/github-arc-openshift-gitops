@@ -267,7 +267,7 @@ metadata:
   name: use-github-arc-scc
 subjects:
   - kind: ServiceAccount
-    name: arc-controller-sa
+    name: arc-runner-set-gha-rs-no-permission
 roleRef:
   kind: ClusterRole
   name: use-github-arc-scc
