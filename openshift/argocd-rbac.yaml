@@ -254,11 +254,11 @@ subjects:
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: system:openshift:scc:github-arc
+  name: github-arc
 rules:
   - apiGroups: ["security.openshift.io"]
     resources: ["securitycontextconstraints"]
-    resourceNames: ["github-arc"]
+    resourceNames: ["github-arc-scc"]
     verbs: ["use"]
 ---
 kind: RoleBinding
@@ -270,7 +270,7 @@ subjects:
     name: arc-controller-sa #arc-runner-set-gha-rs-no-permission
 roleRef:
   kind: ClusterRole
-  name: system:openshift:scc:github-arc
+  name: github-arc
   apiGroup: rbac.authorization.k8s.io
 
 ---
@@ -283,5 +283,5 @@ subjects:
     name: arc-runner-set-gha-rs-no-permission
 roleRef:
   kind: ClusterRole
-  name: system:openshift:scc:github-arc
+  name: github-arc
   apiGroup: rbac.authorization.k8s.io
