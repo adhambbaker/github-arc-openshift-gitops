@@ -20,7 +20,9 @@ metadata:
     # OpenShift annotations
     # openshift.io/sa.scc.mcs: "s0:c26,c5"
     # openshift.io/sa.scc.supplemental-groups: "1000700000/10000"
-    # openshift.io/sa.scc.uid-range: "1000700000/10000"
+    # openshift.io/sa.scc.uid-range: "1000700000/10000" 1000770100
+    openshift.io/sa.scc.supplemental-groups: "1000770000/10000"
+    openshift.io/sa.scc.uid-range: "1000770000/10000" 1000770100
 # ---
 # apiVersion: v1
 # kind: ServiceAccount
