@@ -268,20 +268,22 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: arc-controller-sa
+    namespace: arc-system
 roleRef:
   kind: ClusterRole
   name: github-arc
   apiGroup: rbac.authorization.k8s.io
 
-# ---
-# kind: RoleBinding
-# apiVersion: rbac.authorization.k8s.io/v1
-# metadata:
-#   name: use-github-arc-scc2
-# subjects:
-#   - kind: ServiceAccount
-#     name: arc-runner-set-gha-rs-no-permission
-# roleRef:
-#   kind: ClusterRole
-#   name: github-arc
-#   apiGroup: rbac.authorization.k8s.io
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: use-github-arc-scc2
+subjects:
+  - kind: ServiceAccount
+    name: arc-runner-set-gha-rs-no-permission
+    namespace: arc-runners
+roleRef:
+  kind: ClusterRole
+  name: github-arc
+  apiGroup: rbac.authorization.k8s.io
