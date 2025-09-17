@@ -37,11 +37,11 @@ allowPrivilegeEscalation: true
 allowPrivilegedContainer: false
 allowedCapabilities: null
 defaultAddCapabilities: null
-fsGroup:
-  ranges:
-  - max: 1000779999
-    min: 1000770000
-  type: MustRunAs
+# fsGroup:
+#   ranges:
+#   - max: 1000779999
+#     min: 1000770000
+#   type: MustRunAs
 groups: []
 priority: null
 readOnlyRootFilesystem: false
