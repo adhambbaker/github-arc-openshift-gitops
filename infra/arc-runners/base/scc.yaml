@@ -26,7 +26,7 @@ kind: SecurityContextConstraints
 metadata:
   annotations:
     kubernetes.io/description: Based on restricted SCC, but forces uid/gid 1001/123
-  name: github-arc-scc
+  name: github-arc
 allowHostDirVolumePlugin: false
 allowHostIPC: false
 allowHostNetwork: false
