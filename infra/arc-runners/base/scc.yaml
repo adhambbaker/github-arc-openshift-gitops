@@ -39,8 +39,8 @@ allowedCapabilities: null
 defaultAddCapabilities: null
 fsGroup:
   ranges:
-  - max: 1000680001
-    min: 1000680001
+  - max: 1000700001
+    min: 1000700001
   type: MustRunAs
 groups: []
 priority: null
@@ -52,13 +52,13 @@ requiredDropCapabilities:
 - SETGID
 runAsUser:
   type: MustRunAs
-  uid: 1000680001
+  uid: 1000700001
 seLinuxContext:
   type: MustRunAs
 supplementalGroups:
   ranges:
-  - max: 1000680001
-    min: 1000680001
+  - max: 1000700001
+    min: 1000700001
   type: MustRunAs
 users: []
 volumes:
