@@ -52,7 +52,7 @@ requiredDropCapabilities:
 - SETGID
 runAsUser:
   type: MustRunAs
-  uid: 1001
+  uid: 1000770100
 seLinuxContext:
   type: MustRunAs
 supplementalGroups:
