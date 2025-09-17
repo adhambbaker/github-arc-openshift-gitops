@@ -53,8 +53,8 @@ requiredDropCapabilities:
 runAsUser:
   type: MustRunAs
   ranges:
-    - min: 1000680000
-      max: 1000689999
+  - uidRangeMin: 1000680000
+    uidRangeMax: 1000689999
 seLinuxContext:
   type: MustRunAs
 supplementalGroups:
