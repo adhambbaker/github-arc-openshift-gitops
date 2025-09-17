@@ -61,12 +61,12 @@ supplementalGroups:
     min: 1000770000
   type: MustRunAs
 users: []
-# volumes:
-# - configMap
-# - csi
-# - downwardAPI
-# - emptyDir
-# - ephemeral
-# - persistentVolumeClaim
-# - projected
-# - secret
+volumes:
+- configMap
+- csi
+- downwardAPI
+- emptyDir
+- ephemeral
+- persistentVolumeClaim
+- projected
+- secret
