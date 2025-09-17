@@ -6,20 +6,20 @@ metadata:
 allowPrivilegedContainer: false
 runAsUser:
   type: MustRunAsRange 
-  uidRangeMin: 1000
-  uidRangeMax: 2000
+  uidRangeMin: 1000680000
+  uidRangeMax: 1000689999
 seLinuxContext:
   type: RunAsAny
 fsGroup:
   type: MustRunAs 
   ranges:
-    - min: 1000
-      max: 2000
+    - min: 1000680000
+      max: 1000680000
 supplementalGroups:
   type: MustRunAs 
   ranges:
-    - min: 1000
-      max: 2000
+    - min: 1000680000
+      max: 1000680000
 
 # ---
 # apiVersion: security.openshift.io/v1
