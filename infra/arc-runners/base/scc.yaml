@@ -39,8 +39,8 @@ apiVersion: security.openshift.io/v1
 defaultAddCapabilities: null
 fsGroup:
   ranges:
-  - max: 123
-    min: 123
+  - max: 1000680001
+    min: 1000680001
   type: MustRunAs
 groups: []
 priority: null
@@ -52,13 +52,13 @@ requiredDropCapabilities:
 - SETGID
 runAsUser:
   type: MustRunAs
-  uid: 1000680000
+  uid: 1000670001
 seLinuxContext:
   type: MustRunAs
 supplementalGroups:
   ranges:
-  - max: 123
-    min: 123
+  - max: 1000680001
+    min: 1000680001
   type: MustRunAs
 users: []
 volumes:
