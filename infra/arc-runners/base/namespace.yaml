@@ -11,9 +11,9 @@ metadata:
     openshift.io/user-monitoring: "true"
     openshift.io/cluster-monitoring: "true"
     # # OpenShift specific labels
-    # pod-security.kubernetes.io/enforce: restricted
-    # pod-security.kubernetes.io/audit: restricted
-    # pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     monitoring.coreos.com/enabled: "true"
