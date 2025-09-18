@@ -5,3 +5,4 @@ namespace: arc-controller
 
 resources:
 - base/namespace.yaml
+- base/podmonitor.yaml

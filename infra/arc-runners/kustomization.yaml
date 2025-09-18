@@ -5,7 +5,8 @@ kind: Kustomization
 resources:
 - base/namespace.yaml
 - base/scc.yaml
-# - base/runtime-class.yaml
+- base/runtime-class.yaml
+- base/podmonitor.yaml
 # - base/network-policy.yaml
 # - base/opa-policies.yaml
 # - values.yaml
